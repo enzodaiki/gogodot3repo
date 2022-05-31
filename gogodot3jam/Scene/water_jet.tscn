@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/water_jet.gd" type="Script" id=2]
+[ext_resource path="res://assets/wave sprite .png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "water_project"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[node name="WaterJet" type="Area2D"]
+position = Vector2( 0, -500 )
+z_index = 5
+script = ExtResource( 2 )
+
+[node name="projetil" type="Sprite" parent="."]
+position = Vector2( 0, -500 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 2
+texture = ExtResource( 3 )
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="projetil"]
+autoplay = "water_project"
+anims/water_project = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="projetil"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="screen_exited" from="projetil/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="projetil/VisibilityNotifier2D" to="projetil" method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

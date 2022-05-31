@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/jam sprite (1).png" type="Texture" id=1]
+[ext_resource path="res://Scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://Scene/hud_essence.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 3 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+step = 0.0222222
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 7.5, 7 )
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -7 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 3
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/running = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 2 )
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1.90735e-06, 1.90735e-06 )
+current = true
+zoom = Vector2( 0.4, 0.4 )
+
+[node name="tempo_recarga_fogo" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="tempo_recarga_agua" type="Timer" parent="."]
+one_shot = true
+
+[node name="tempo_recarga_terra" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="hup_essence" parent="." instance=ExtResource( 3 )]
+
+[connection signal="timeout" from="tempo_recarga_fogo" to="." method="_on_tempo_recarga_fogo_timeout"]
+[connection signal="timeout" from="tempo_recarga_agua" to="." method="_on_tempo_recarga_agua_timeout"]
+[connection signal="timeout" from="tempo_recarga_terra" to="." method="_on_tempo_recarga_terra_timeout"]
