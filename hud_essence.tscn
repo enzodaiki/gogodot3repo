@@ -1,0 +1,297 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/essence_sprite_2.png" type="Texture" id=1]
+[ext_resource path="res://scripts/hud_essence.gd" type="Script" id=2]
+[ext_resource path="res://assets/lifebar sprite.png" type="Texture" id=3]
+[ext_resource path="res://assets/manabar sprite.png" type="Texture" id=4]
+[ext_resource path="res://assets/mana counter.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect1:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 968, 412 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect1:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect3:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 968, 526 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect3:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ColorRect2:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 48 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ColorRect2:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 968, 592 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "earthcooldown"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 968, 544 ), Vector2( 968, 592 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 48 ), Vector2( 48, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "firecooldown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect1:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect1:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 968, 412 ), Vector2( 968, 460 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect1:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 48 ), Vector2( 48, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "firestandby"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect1:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 968, 460 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect1:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "watercooldown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect3:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 968, 478 ), Vector2( 968, 526 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect3:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 48 ), Vector2( 48, 0 ) ]
+}
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="hud_sprite1" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( 992, 436 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+vframes = 4
+
+[node name="manacounter1" type="Sprite" parent="hud_sprite1"]
+position = Vector2( -15, -14 )
+z_index = 1
+texture = ExtResource( 5 )
+vframes = 3
+
+[node name="hud_sprite2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( 992, 502 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+vframes = 4
+
+[node name="manacounter2" type="Sprite" parent="hud_sprite2"]
+position = Vector2( -15, -14 )
+z_index = 1
+texture = ExtResource( 5 )
+vframes = 3
+frame = 2
+
+[node name="hud_sprite3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( 992, 568 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+vframes = 4
+
+[node name="manacounter3" type="Sprite" parent="hud_sprite3"]
+position = Vector2( -15, -14 )
+z_index = 1
+texture = ExtResource( 5 )
+vframes = 3
+frame = 1
+
+[node name="lifebar" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.72549 )
+position = Vector2( 146, 56 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+vframes = 11
+
+[node name="manabar" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.72549 )
+position = Vector2( 178, 120 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+vframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "firestandby"
+anims/RESET = SubResource( 1 )
+anims/earthcooldown = SubResource( 3 )
+anims/firecooldown = SubResource( 2 )
+anims/firestandby = SubResource( 5 )
+anims/watercooldown = SubResource( 4 )
+
+[node name="ColorRect1" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 968.0
+margin_top = 412.0
+margin_right = 1016.0
+margin_bottom = 412.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 968.0
+margin_top = 592.0
+margin_right = 1016.0
+margin_bottom = 640.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 968.0
+margin_top = 526.0
+margin_right = 1016.0
+margin_bottom = 526.0
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
